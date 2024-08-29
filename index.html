@@ -1,0 +1,54 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatbot</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="src/chatbot.css">
+</head>
+<body class="bg-gray-900 text-gray-100">
+
+  <button id="chatbot-toggle" class="fixed bottom-8 right-8 bg-blue-600 text-white p-4 rounded-full shadow-lg transform hover:scale-105 transition duration-300">💬</button>
+
+
+  <div id="chatbot" class="fixed bottom-20 right-8 bg-gray-800 border border-gray-700 rounded-lg shadow-xl w-full max-w-sm md:max-w-md hidden flex-col text-sm">
+    <div id="chatbot-header" class="flex items-center justify-between bg-blue-600 p-4 rounded-t-lg">
+      <span id="chatbot-title" class="text-white font-bold">Support Bot</span>
+      <div>
+        <button id="restart-btn" class="text-white mr-2">🔄</button>
+        <button id="clear-btn" class="text-white">🗑</button>
+        <button id="close-btn" class="text-white ml-2">✖</button>
+      </div>
+    </div>
+    <div id="chatbot-messages" class="flex-1 p-4 overflow-y-auto"></div>
+    <div id="suggested-messages" class="flex flex-wrap p-4 gap-2"></div>
+    <div id="chatbot-input" class="flex items-center bg-gray-700 p-4 border-t border-gray-600">
+      <input type="text" id="user-input" class="flex-1 p-2 bg-gray-800 border border-gray-600 rounded text-white" placeholder="Type your message...">
+      <button id="send-btn" class="ml-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-500 transition duration-300">Send</button>
+    </div>
+  </div> 
+
+  
+
+
+  <script src="src/chatbot.js"></script>
+  <script>
+    // Initialize the chatbot with custom options
+    const customOptions = {
+      themeColor: '#0061f2',
+      titleColor: 'white',
+      initialMessage: 'Hello! How can I assist you today?',
+      botResponses: {
+        "hello": "Hi there! How can I assist you?",
+        "what services do you offer": "We offer web development, digital marketing, and SEO services.",
+        "bye": "Goodbye! Have a great day!",
+      },
+      suggestedMessages: ["Hello", "What services do you offer?", "Bye"],
+      title: 'Support Bot'
+    };
+    const myChatbot = new Chatbot(customOptions);
+  </script>
+</body>
+</html> 
